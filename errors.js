@@ -18,7 +18,7 @@ function getErrorMessage(msg, code, lineAt, charAt) {
 function BadIndentation(code) {
     this.name = 'BadIndentation';
     this.message = getErrorMessage('Bad indentation', code);
-    this.stack = (new Error()).stack;
+    Error.captureStackTrace(this, this.constructor);
 }
 BadIndentation.prototype = new Error();
 
@@ -26,7 +26,7 @@ BadIndentation.prototype = new Error();
 function UnexpectedSymbol(code) {
     this.name = 'UnexpectedSymbol';
     this.message = getErrorMessage('Unexpected symbol', code);
-    this.stack = (new Error()).stack;
+    Error.captureStackTrace(this, this.constructor);
 }
 UnexpectedSymbol.prototype = new Error();
 
@@ -37,7 +37,7 @@ function IllegalName(part, extMsg) {
         'Illegal ' + part.type + (extMsg ? ': ' + extMsg: ''),
         part.src, part.lineAt, part.charAt
     );
-    this.stack = (new Error()).stack;
+    Error.captureStackTrace(this, this.constructor);
 }
 IllegalName.prototype = new Error();
 
@@ -45,7 +45,7 @@ IllegalName.prototype = new Error();
 function UnterminatedPart(part) {
     this.name = 'UnterminatedPart';
     this.message = getErrorMessage('Unterminated ' + part.type, part.src, part.lineAt, part.charAt);
-    this.stack = (new Error()).stack;
+    Error.captureStackTrace(this, this.constructor);
 }
 UnterminatedPart.prototype = new Error();
 
@@ -53,7 +53,7 @@ UnterminatedPart.prototype = new Error();
 function JSParseError(msg, code, lineAt, charAt) {
     this.name = 'JSParseError';
     this.message = getErrorMessage(msg, code, lineAt, charAt);
-    this.stack = (new Error()).stack;
+    Error.captureStackTrace(this, this.constructor);
 }
 JSParseError.prototype = new Error();
 
@@ -61,7 +61,7 @@ JSParseError.prototype = new Error();
 function DuplicateDecl(part) {
     this.name = 'DuplicateDecl';
     this.message = getErrorMessage('Duplicate ' + part.type, part.src, part.lineAt, part.charAt);
-    this.stack = (new Error()).stack;
+    Error.captureStackTrace(this, this.constructor);
 }
 DuplicateDecl.prototype = new Error();
 
@@ -69,7 +69,7 @@ DuplicateDecl.prototype = new Error();
 function IncompletePart(part) {
     this.name = 'IncompletePart';
     this.message = getErrorMessage('Incomplete ' + part.type, part.src, part.lineAt, part.charAt);
-    this.stack = (new Error()).stack;
+    Error.captureStackTrace(this, this.constructor);
 }
 IncompletePart.prototype = new Error();
 
@@ -77,7 +77,7 @@ IncompletePart.prototype = new Error();
 function UnknownPart(part) {
     this.name = 'UnknownPart';
     this.message = getErrorMessage('Unknown ' + part.type, part.src, part.lineAt, part.charAt);
-    this.stack = (new Error()).stack;
+    Error.captureStackTrace(this, this.constructor);
 }
 UnknownPart.prototype = new Error();
 
@@ -90,7 +90,7 @@ function InconsistentCommand(part) {
         part.lineAt,
         part.charAt
     );
-    this.stack = (new Error()).stack;
+    Error.captureStackTrace(this, this.constructor);
 }
 InconsistentCommand.prototype = new Error();
 
@@ -98,7 +98,7 @@ InconsistentCommand.prototype = new Error();
 function PrecompileExprError(msg, code, lineAt, charAt) {
     this.name = 'PrecompileExprError';
     this.message = getErrorMessage(msg, code, lineAt, charAt);
-    this.stack = (new Error()).stack;
+    Error.captureStackTrace(this, this.constructor);
 }
 PrecompileExprError.prototype = new Error();
 
